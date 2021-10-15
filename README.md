@@ -5,6 +5,7 @@
 ### Exemplo de entrada x saída
 #### 4-bit e 8-bit (Gráfico do Proteus)
 
+
 ## Como construir um DAC-R2R?
 ### Esquemático elétrico do DAC-R2R de 8-bit 
 ### Contas de resolução 
@@ -12,6 +13,7 @@
 ### Implementação de potênciometro para ajustes da frequência
 ### Simulação com o Proteus
 ### Descrição do display como IHM
+
 
 ## Comparação da simulação e do real para os três tipos de onda 
 ### Rampa
