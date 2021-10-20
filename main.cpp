@@ -1,4 +1,7 @@
+#include "math.h"
 #include "mbed.h"
+
+#define PI 3.14159265
 
 Serial pc(D1, D0); // Comunicação com USB
 
@@ -36,16 +39,16 @@ int senoide[] = {
 }; // Look Up table para gerar um sinal senoidal
 
 int i, cont;
-double espera;
+double espera, tempo;
 
 void rotina_troca_onda(void); // Rotina para trocar o sinal exibido
 
-void rotina_rampa(void);          // Rotina para gerar um sinal de uma rampa
-void rotina_triangular(void);     // Rotina para gerar um sinal triangular
-void rotina_senoidal(void);       // Rotina para gerar um sinal de uma senoide
-void rotina_PWM(void);            // Rotina para gerar um sinal de um PWM
+void rotina_rampa(void);      // Rotina para gerar um sinal de uma rampa
+void rotina_triangular(void); // Rotina para gerar um sinal triangular
+void rotina_senoidal(void);   // Rotina para gerar um sinal de uma senoide
+void rotina_PWM(void);        // Rotina para gerar um sinal de um PWM
 void rotina_frequencia(double freq); // Rotina para calcular a frequência dado o
-                                  // valor do potênciometro
+                                     // valor do potênciometro
 
 int main() {
   pc.baud(115200); // Define a velocidade da porta USB
@@ -91,11 +94,17 @@ void rotina_triangular() {
 
 void rotina_senoidal() {
   for (i = 0; i <= 255; i++) {
-    rotina_frequencia(10);
-    saida = senoide[i];
-    wait(espera);
-    //wait(0.001);
+    // rotina_frequencia(4);
+    // saida = senoide[i];
+    // wait(espera);
+    // pc.printf("Periodo= %fms \r\n", espera*1000*256);
+    tempo += 0.01;
+    saida = 2.5 * sin(2 * PI * tempo * 10);
+
+    // wait(0.01);
   }
+
+  tempo = 0.0;
 }
 
 void rotina_PWM() {
@@ -106,9 +115,4 @@ void rotina_PWM() {
   wait_ms(20);
 }
 
-void rotina_frequencia(double freq) { 
-
-    espera = (1 / (freq * 256)); 
-    pc.printf("Periodo= %f \r\n", espera);
-    
-    }
+void rotina_frequencia(double freq) { espera = (1 / (freq * 256)); }
