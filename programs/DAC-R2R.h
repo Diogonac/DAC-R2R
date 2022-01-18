@@ -1,5 +1,6 @@
 #include "mbed.h"
 #include "all_config.h"
+#include <cstdio>
 
 
 Serial pc(TX, RX); // Comunicação com USB
@@ -11,7 +12,7 @@ BusOut saida(PA_11, PB_12, PB_2, PB_1, PB_15, PB_14, PB_13, PC_4); // Barramento
 
 InterruptIn confirm_BT(USER_BT); // Declara o botão do usuário para troca de sinal
 
-QEI encoder(PC_5, PC_6, 15);
+QEI encoder(PC_5, PC_6, 300);
 
 Timer debouce;
 Ticker clk_func;
@@ -20,20 +21,10 @@ bool flag;
 float analog;
 bool aux_deb;
 
-int i, cont, j;
+int i, cont, j, wave_select;;
 double tempo, espera, start, initialization;
 
-char underline[8] =
-{
-0b00000,
-0b00000,
-0b00000 ,
-0b00000,
-0b00000,
-0b00000,
-0b00000,
-0b11111
-};
+
 
 void user_confirm(void); // Rotina para trocar o sinal exibido
 void init(void); // Initialization 
@@ -45,7 +36,7 @@ void clock_func(void);
 void rotina_rampa(void);           // Rotina para gerar um sinal de uma rampa
 void rotina_triangular(void);      // Rotina para gerar um sinal triangular
 void rotina_senoidal(void);        // Rotina para gerar um sinal de uma senoide
-void rotina_frequencia(int pulse); // Rotina para calcular a frequência dado o
+void frequency(int pulse, int value); // Rotina para calcular a frequência dado o
                                    // valor do potênciometro
 
  int main() {
@@ -53,7 +44,7 @@ void rotina_frequencia(int pulse); // Rotina para calcular a frequência dado o
 
   confirm_BT.fall(&user_confirm); // Define quando o botão vai ser detectado
 
-  clk_func.attach(&clock_func, 0.390625e-4);
+  
 
   debouce.start();
 
@@ -63,7 +54,7 @@ void rotina_frequencia(int pulse); // Rotina para calcular a frequência dado o
 
 
     /* Read encoder to calculate delay time */
-    rotina_frequencia(encoder.getPulsesLCD());
+    //pc.printf("Pulses: %d\r\n", encoder.getPulsesLCD());
 
     if (initialization == true && start == true) {
 
@@ -72,36 +63,61 @@ void rotina_frequencia(int pulse); // Rotina para calcular a frequência dado o
     
     }
 
-    // switch (cont) {
+    switch (cont) {
 
-    // case 1:
-    //     wave_init();
-    //     break;
+    case 1:
+        wave_init();
+        break;
     
-    // case 2:
-    //     LCD.cls();
-    //     cont = 3;
-    //     break;
+    case 2:
+        LCD.cls();
+        cont = 3;
+        break;
     
-    // case 3:
-    //     wave_selection_1();
-    //     // cont = 4;
-    //     break;
+    case 3:
+        wave_selection_1();
+        break;
     
-    // case 4:
-    //     slider();
-    //     break;
+    case 4:
+        LCD.cls();
+        cont = 5;
 
-    // }
+    case 5:
+        if(wave_select == 0){frequency(encoder.getPulses(), 2);}
+        else{frequency(encoder.getPulses(), 1);}
+        break;
 
-    if (cont == 0)
-      rotina_rampa();
-    if (cont == 1)
-      rotina_triangular();
-    if (cont == 2)
-      rotina_senoidal();
-    if (cont >= 3)
-      cont = 0;
+    case 7:
+            switch (wave_select) {
+                case 0:
+                    rotina_triangular();
+                    break;
+
+                case 1:
+                    rotina_rampa();
+                    break;
+
+                case 2:
+                    rotina_senoidal();
+                    break;
+                }
+        break;
+    
+    case 8:
+        LCD.cls();
+        cont = 3;
+
+
+    }
+
+    // if (cont == 0)
+    //   rotina_rampa();
+    // if (cont == 1)
+    //   rotina_triangular();
+    // if (cont == 2)
+    //   rotina_senoidal();
+    // if (cont >= 3)
+    //   cont = 0;
   }
   
 
@@ -117,34 +133,37 @@ void wave_init(){
 }
 
 void wave_selection_1(){
-
     
     LCD.locate(3, 0);
     LCD.printf("Triangular\n");
-    LCD.locate(7, 1);
-    LCD.printf("OK\n");
-    LCD.character(15, 1, 0x7E);
 
-    // if(encoder.getPulsesLCD() <= 15 && encoder.getPulsesLCD() >= 0){
-    LCD.character(encoder.getPulsesLCD(), 1, 0x5F);
-    LCD.character(encoder.getPulsesLCD()-1, 1, 0x20);
-    LCD.character(encoder.getPulsesLCD()+1, 1, 0x20);
-// }
+    LCD.locate(1, 1);
+    LCD.printf("Ramp\n");
 
-// if(encoder.getPulses() > 16){
-//     LCD.character(15, 1, 0x5F);
-// }
+    LCD.locate(11, 1);
+    LCD.printf("Sine\n");
 
-// if(encoder.getPulses() < 0){
-//     LCD.character(0, 1, 0x5F);
-// }
-}
-void slider(){
-    LCD.character(encoder.getPulses(), 1, 0x5F);
-    LCD.character(encoder.getPulses()-1, 1, 0x20);
-    LCD.character(encoder.getPulses()+1, 1, 0x20);
-    //pc.printf("Pulses= %d\r\n", encoder.getPulsesLCD());
+    switch (encoder.getPulsesLCD()) {
+    case 0:
+        LCD.character(0, 1, 0x20);
+        LCD.character(10, 1, 0x20);
+        LCD.character(2, 0, 0x7E);
+        break;
 
+    case 1:
+        LCD.character(2, 0, 0x20);
+        LCD.character(10, 1, 0x20);
+        LCD.character(0, 1, 0x7E);
+        break;
+
+    case 2:
+        LCD.character(2, 0, 0x20);
+        LCD.character(0, 1, 0x20);
+        LCD.character(10, 1, 0x7E);
+        break;
+     }
+
+     wave_select = encoder.getPulsesLCD();
 }
 
 void init(){
@@ -155,7 +174,6 @@ void init(){
   aux_deb = false;
   start = false;
   initialization = false;
-
 
   LCD.locate(5, 0);
   LCD.printf("Hello!\n");
@@ -222,15 +240,18 @@ void rotina_senoidal() {
   }
 }
 
-void rotina_frequencia(int pulse) {
-//   if (pulse <= 59 && pulse > 0) {
-//     espera = ((1 / (freq[pulse] * 256)));
+void frequency(int pulse, int value) {
 
-//   }
+    LCD.locate(0, 0);
+    LCD.printf("Frequency:\n");
 
-//   else {
+    LCD.locate(10, 0);
+    LCD.printf("%d\n", pulse);
 
-//     espera = ((1 / (freq[0] * 256)));
-//   }
-//printf("Pulsos: %d\r\n", pulse);
+    if(cont == 6){
+        espera = 1.0/(256*pulse*value);
+        clk_func.attach(&clock_func, espera);
+        cont = 7;
+    }
+    
 }
