@@ -26,7 +26,10 @@ Para facilitar a interação do DAC com o usuario, foi utilizado apenas 1 compon
 
 Os sinais de saída desse encoder são muito ruidosos, ocasionando leituras falsas ao longo do desenvolvimento desse projeto. Para corrigir esse problema nos sinais, foi utilizado um schmitt-trigger (SN74HC14N), conforme a imagem a seguir. 
 
-### Descrição das telas da IHM
+![](https://github.com/Diogonac/DAC-R2R/blob/main/images/SCT.png)
+
+## Descrição das telas da IHM
+Para conceber a interface com o usuario, foi utilizado uma *shield* de um LCD 2x16. Para poder trocar de tela ou confirmar um parâmetro, basta dar um *click* no econder. Por outro lado, para alterar algum parâmetro/seleção, basta girar o encoder em qualquer sentido. A seguir, estão ilustradas as possiveis telas da IHM. 
 
 ## Comparação da simulação e do real para os três tipos de onda 
 ### Rampa
