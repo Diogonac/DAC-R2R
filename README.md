@@ -12,7 +12,7 @@ A imagem abaixo ilustra como é a construção do DAC de 8-bit, neste projeto fo
 ## Contas de resolução 
 Cada pino de entrada equivale a 1-bit do DAC, cada bit pode corresponder a dois valores lógicos, alto ou baixo, ou seja, temos duas possibilidades de informações para o DAC por bit. Como temos 8-bit, teremos 2^8 - 1 possibilidades de informações. Agora imagine que cada informação corresponde a um degrau de uma escada. Mas o que significa essa informação? Cada degrau da escada equivale a um nível específico de tensão na saída do DAC (DAC_OUT_LOW). Dessa forma, o nível específico de tensão foi convertido em um sinal analógico.
 
-![](
+![](https://github.com/Diogonac/DAC-R2R/blob/main/images/MAT.svg)
 ### Implementação do amplificador operacional com potênciometro para o ajuste da amplitude do sinal de saída
 ### Implementação de potênciometro para ajustes da frequência
 ### Descrição das telas da IHM
