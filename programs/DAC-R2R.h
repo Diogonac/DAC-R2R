@@ -246,7 +246,10 @@ void frequency(int pulse, int value) {
     LCD.printf("Frequency:\n");
 
     LCD.locate(10, 0);
-    LCD.printf("%d\n", pulse);
+    LCD.printf("%d", pulse);
+
+    LCD.locate(13, 0);
+    LCD.printf("Hz\n");
 
     if(cont == 6){
         espera = 1.0/(256*pulse*value);
