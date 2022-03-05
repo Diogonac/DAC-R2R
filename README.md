@@ -1,7 +1,7 @@
-# DAC-R2R
+# **DAC-R2R**
 
-## O que é um DAC-R2R?
-### eee
+## **O que é um DAC-R2R?**
+### *Digital-Analog Converter* é todo aquele circuito capaz de transformar um determinado sinal discreto em um sinal analógico ou contínuo. Estes circuitos são fundamentais quando queremos entender o comportamento de um sistema, cujo sinal de entrada seja uma senoide com amplitude e frequência definidas. Em outras palavras, o Conversor Digital-Analógico é a parte principal de um gerador de sinais.   
 
 
 ### Exemplo de entrada x saída
