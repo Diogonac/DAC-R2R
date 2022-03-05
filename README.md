@@ -6,8 +6,13 @@
 Neste trabalho foi utilizada a topologia R-2R de 8-bit, pois ela utiliza apenas resistores para realizar a conversão de digital para analógico. 
 
 ## Como construir um DAC-R2R?
-### Esquemático elétrico do DAC-R2R de 8-bit 
-### Contas de resolução 
+A imagem abaixo ilustra como é a construção do DAC de 8-bit, neste projeto foram utilizados apenas resistores de 10kOhm de precisão. O seu funcionamento é muito simples, basta criar uma sequência de pulsos com sinal lógico alto (1) ou baixo (0) nos pinos (PA11, PB12 ...), para poder obter um sinal de tensão contínuo no tempo (DAC_OUT_LOW). 
+
+![](https://github.com/Diogonac/DAC-R2R/blob/main/images/DAC.png)
+## Contas de resolução 
+Cada pino de entrada equivale a 1-bit do DAC, cada bit pode corresponder a dois valores lógicos, alto ou baixo, ou seja, temos duas possibilidades de informações para o DAC por bit. Como temos 8-bit, teremos 2^8 - 1 possibilidades de informações. Agora imagine que cada informação corresponde a um degrau de uma escada. Mas o que significa essa informação? Cada degrau da escada equivale a um nível específico de tensão na saída do DAC (DAC_OUT_LOW). Dessa forma, o nível específico de tensão foi convertido em um sinal analógico.
+
+![](
 ### Implementação do amplificador operacional com potênciometro para o ajuste da amplitude do sinal de saída
 ### Implementação de potênciometro para ajustes da frequência
 ### Descrição das telas da IHM
