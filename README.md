@@ -17,9 +17,15 @@ Cada pino de entrada equivale a 1-bit do DAC, cada bit pode corresponder a dois 
 ## Amplificando o sinal de saída
 Com o objetivo de permitir que o DAC desenvolvido neste projeto possa ser usado como um gerador de sinais em outros trabalhos, foi implementado um circuito amplificador não inversor com ajuste de tensão por meio de um *trimpot*, conforme o esquemático abaixo.
 
+![](https://github.com/Diogonac/DAC-R2R/blob/main/images/AMP.png)
 
+É importante salientar que, as conexões TRIN1 e TRIN2 se referem aos pinos do *trimpot* de 10kOhm e o capacitor C4 foi utilizado para filtrar o sinal de saida do DAC. Logo com esse arranjo do amplificador o sinal DAC_OUT_LOW pode ser amplificado em até x10, porém, a tensão de saida DAC_OUT_HIGH é limitada pela tensão de alimentação do amplificador operacional utilizado (LM358N).
 
-### Implementação de potênciometro para ajustes da frequência
+## Implementação do encoder rotativo 
+Para facilitar a interação do DAC com o usuario, foi utilizado apenas 1 componente, o econder rotativo. Este componente possui três sinais de saída: Botão 0/1 (SW_raw), Clock horário (DT_raw) e Clock anti-horário (CLK_raw). Com essas informação, foi possivel desenvolver lógicas que simplifiquem o uso do dispositivo.
+
+Os sinais de saída desse encoder são muito ruidosos, ocasionando leituras falsas ao longo do desenvolvimento desse projeto. Para corrigir esse problema nos sinais, foi utilizado um schmitt-trigger (SN74HC14N), conforme a imagem a seguir. 
+
 ### Descrição das telas da IHM
 
 ## Comparação da simulação e do real para os três tipos de onda 
