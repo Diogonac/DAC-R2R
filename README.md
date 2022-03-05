@@ -6,6 +6,8 @@
 Neste trabalho foi utilizada a topologia R-2R de 8-bit, pois ela utiliza apenas resistores para realizar a conversão de digital para analógico. 
 
 ## Como construir um DAC-R2R?
+A imagem abaixo ilustra como é a construção do DAC de 8-bit, neste projeto foram utilizados apenas resistores de 10kOhm de precisão 
+![](https://github.com/Diogonac/DAC-R2R/blob/main/images/DAC.png)
 ### Esquemático elétrico do DAC-R2R de 8-bit 
 ### Contas de resolução 
 ### Implementação do amplificador operacional com potênciometro para o ajuste da amplitude do sinal de saída
