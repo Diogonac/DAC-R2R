@@ -1,7 +1,9 @@
 # DAC-R2R
 
-## O que é um DAC-2R?
-### Definição formal
+## O que é um DAC-R2R?
+### eee
+
+
 ### Exemplo de entrada x saída
 #### 4-bit e 8-bit (Gráfico do Proteus)
 
