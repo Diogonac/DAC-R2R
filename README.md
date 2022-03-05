@@ -31,6 +31,23 @@ Os sinais de saída desse encoder são muito ruidosos, ocasionando leituras fals
 ## Descrição das telas da IHM
 Para conceber a interface com o usuario, foi utilizado uma *shield* de um LCD 2x16. Para poder trocar de tela ou confirmar um parâmetro, basta dar um *click* no econder. Por outro lado, para alterar algum parâmetro/seleção, basta girar o encoder em qualquer sentido. A seguir, estão ilustradas as possiveis telas da IHM. 
 
+![](https://github.com/Diogonac/DAC-R2R/blob/main/images/T1.jpg)
+![](https://github.com/Diogonac/DAC-R2R/blob/main/images/T2.jpg)
+![](https://github.com/Diogonac/DAC-R2R/blob/main/images/T3.jpg)
+![](https://github.com/Diogonac/DAC-R2R/blob/main/images/T4.jpg)
+
+## Placa de Circuito Impressa (PCI)
+Para poder compactar o projeto e evitar ruídos de *protoboard*, foi desenvolvido uma *shilde* para agrupar todos os componentes. A seguir estão algumas fotos do resultado final.
+
+![](https://github.com/Diogonac/DAC-R2R/blob/main/images/PCB1.jpg)
+![](https://github.com/Diogonac/DAC-R2R/blob/main/images/PCB2.jpg)
+![](https://github.com/Diogonac/DAC-R2R/blob/main/images/PCB3.jpg)
+![](https://github.com/Diogonac/DAC-R2R/blob/main/images/PCB4.jpg)
+Caso você queira melhorar ou replicar este projeto, os arquivos estão na pasta "proteus".
+
+
+
+
 ## Comparação da simulação e do real para os três tipos de onda 
 ### Rampa
 ### Triangular
