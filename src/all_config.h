@@ -10,6 +10,11 @@
 #include "libraries/rotary_encoder.h"
 #include "libraries/LCD.h"
 
+// Include modules
+#include "modules/screens.h"
+#include "modules/waves.h"
+
+
 
 
 
