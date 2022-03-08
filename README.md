@@ -19,19 +19,37 @@ Com o objetivo de permitir que o DAC desenvolvido neste projeto possa ser usado 
 
 ![](https://github.com/Diogonac/DAC-R2R/blob/main/images/AMP.png)
 
-É importante salientar que, as conexões TRIN1 e TRIN2 se referem aos pinos do *trimpot* de 10kOhm e o capacitor C4 foi utilizado para filtrar o sinal de saida do DAC. Logo com esse arranjo do amplificador o sinal DAC_OUT_LOW pode ser amplificado em até x10, porém, a tensão de saida DAC_OUT_HIGH é limitada pela tensão de alimentação do amplificador operacional utilizado (LM358N).
+É importante salientar que, as conexões TRIN1 e TRIN2 se referem aos pinos do *trimpot* de 10kOhm e o capacitor C4 foi utilizado para filtrar o sinal de saída do DAC. Logo com esse arranjo do amplificador o sinal DAC_OUT_LOW pode ser amplificado em até x10, porém, a tensão de saída DAC_OUT_HIGH é limitada pela tensão de alimentação do amplificador operacional utilizado (LM358N).
 
 ## Implementação do encoder rotativo 
-Para facilitar a interação do DAC com o usuario, foi utilizado apenas 1 componente, o econder rotativo. Este componente possui três sinais de saída: Botão 0/1 (SW_raw), Clock horário (DT_raw) e Clock anti-horário (CLK_raw). Com essas informação, foi possivel desenvolver lógicas que simplifiquem o uso do dispositivo.
+Para facilitar a interação do DAC com o usuário, foi utilizado apenas 1 componente, o econder rotativo. Este componente possui três sinais de saída: Botão 0/1 (SW_raw), Clock horário (DT_raw) e Clock anti-horário (CLK_raw). Com essas informação, foi possível desenvolver lógicas que simplifiquem o uso do dispositivo.
 
 Os sinais de saída desse encoder são muito ruidosos, ocasionando leituras falsas ao longo do desenvolvimento desse projeto. Para corrigir esse problema nos sinais, foi utilizado um schmitt-trigger (SN74HC14N), conforme a imagem a seguir. 
 
 ![](https://github.com/Diogonac/DAC-R2R/blob/main/images/SCT.png)
 
 ## Descrição das telas da IHM
-Para conceber a interface com o usuario, foi utilizado uma *shield* de um LCD 2x16. Para poder trocar de tela ou confirmar um parâmetro, basta dar um *click* no econder. Por outro lado, para alterar algum parâmetro/seleção, basta girar o encoder em qualquer sentido. A seguir, estão ilustradas as possiveis telas da IHM. 
+Para conceber a interface com o usuário, foi utilizado uma *shield* de um LCD 2x16. Para poder trocar de tela ou confirmar um parâmetro, basta dar um *click* no econder. Por outro lado, para alterar algum parâmetro/seleção, basta girar o encoder em qualquer sentido. A seguir, estão ilustradas as possíveis telas da IHM. 
 
-## Comparação da simulação e do real para os três tipos de onda 
+![](https://github.com/Diogonac/DAC-R2R/blob/main/images/T1.jpg)
+![](https://github.com/Diogonac/DAC-R2R/blob/main/images/T2.jpg)
+![](https://github.com/Diogonac/DAC-R2R/blob/main/images/T3.jpg)
+![](https://github.com/Diogonac/DAC-R2R/blob/main/images/T4.jpg)
+
+## Placa de Circuito Impressa (PCI)
+Para poder compactar o projeto e evitar ruídos de *protoboard*, foi desenvolvido uma *shield* para agrupar todos os componentes. A seguir estão algumas fotos do resultado.
+
+![](https://github.com/Diogonac/DAC-R2R/blob/main/images/PCB1.jpg)
+![](https://github.com/Diogonac/DAC-R2R/blob/main/images/PCB2.jpg)
+![](https://github.com/Diogonac/DAC-R2R/blob/main/images/PCB3.jpg)
+![](https://github.com/Diogonac/DAC-R2R/blob/main/images/PCB4.jpg)
+Caso você queira melhorar ou replicar este projeto, os arquivos estão na pasta "proteus".
+
+Descrição das conexões da *shield*.
+![](https://github.com/Diogonac/DAC-R2R/blob/main/images/PW.svg)
+
+
+## Resultados
 ### Rampa
 ### Triangular
 ### Senoidal 
