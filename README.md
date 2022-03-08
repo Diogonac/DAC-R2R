@@ -48,8 +48,14 @@ Caso você queira melhorar ou replicar este projeto, os arquivos estão na pasta
 Descrição das conexões da *shield*.
 ![](https://github.com/Diogonac/DAC-R2R/blob/main/images/PW.svg)
 
-
 ## Resultados
+Por fim, este projeto foi testado e obteve um erro menor do que 0,3% para os três tipos de ondas com uma frequência máxima de 100Hz. No entanto, a onda triângular apresentou um erro percentual de 2,5% para 100Hz, porém, considerando o escopo didático do projeto, este erro é aceitável. Abaixo estão as fotos das medições dos três tipos de ondas para 1Hz, 10Hz, 50Hz e 100Hz, considerando o ganho máximo do amplificador operacional.
+
 ### Rampa
+![](https://github.com/Diogonac/DAC-R2R/blob/main/images/scope_0.png)![](https://github.com/Diogonac/DAC-R2R/blob/main/images/scope_1.png)![](https://github.com/Diogonac/DAC-R2R/blob/main/images/scope_2.png)![](https://github.com/Diogonac/DAC-R2R/blob/main/images/scope_3.png)
+
 ### Triangular
+![](https://github.com/Diogonac/DAC-R2R/blob/main/images/scope_4.png)![](https://github.com/Diogonac/DAC-R2R/blob/main/images/scope_5.png)![](https://github.com/Diogonac/DAC-R2R/blob/main/images/scope_6.png)![](https://github.com/Diogonac/DAC-R2R/blob/main/images/scope_7.png)
+
 ### Senoidal 
+![](https://github.com/Diogonac/DAC-R2R/blob/main/images/scope_8.png)![](https://github.com/Diogonac/DAC-R2R/blob/main/images/scope_9.png)![](https://github.com/Diogonac/DAC-R2R/blob/main/images/scope_10.png)![](https://github.com/Diogonac/DAC-R2R/blob/main/images/scope_11.png)
